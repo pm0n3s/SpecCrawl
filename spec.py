@@ -19,7 +19,6 @@ reader = PyPDF2.PdfFileReader(pdfFile)
 for pageNum in range(reader.numPages):
     txtWall = reader.getPage(pageNum).extractText().encode("utf-8")
     newTxt = open(directory + pdf + '.txt', 'a+')
-    newTxt.write('page'+ str(pageNum + 1) + '/n') 
     newTxt.write(str(txtWall))
 
 newTxt.close()
