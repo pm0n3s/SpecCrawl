@@ -10,7 +10,8 @@ directory = 'C:\\ProjectTxtFiles\\'
 if not os.path.exists(directory):
     os.makedirs(directory)
 
-os.chdir('C:\\Users\\Patrick\\Downloads')
+os.chdir('C:\\Users\\pbodin\\Downloads')
+# os.chdir('C:\\Users\\Patrick\\Downloads')
 
 pdfFile = open(pdf + ".pdf", 'rb')
 
