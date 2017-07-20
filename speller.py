@@ -76,18 +76,6 @@ while True:
             # prepare for new word
             index, word = 0, ""
 
-    # ignore words with numbers (like MS Word)
-    elif c.isdigit():
-        
-        # consume remainder of alphabetical string
-        while True:
-            c = fp.read(1)
-            if not c or (not c.isalpha() and not c.isdigit()):
-                break
-
-        # prepare for new word
-        index, word = 0, ""
-
     # we must have found a whole word
     elif index > 0:
 
@@ -124,7 +112,7 @@ time_size = after - before
 # unload dictionary
 before = time.process_time()
 unloaded = d.unload()
-after = time.process_time();
+after = time.process_time()
 
 # abort if dictionary not unloaded
 if not unloaded:
@@ -136,7 +124,7 @@ time_unload = after - before
 
 # report benchmarks
 
-print("\nWORDS MISSPELLED:     {}".format(misspellings))
+print("\nWORDS MISSPELLED:     {}".format(findings))
 print("WORDS IN DICTIONARY:  {}".format(n))
 print("WORDS IN TEXT:        {}".format(words))
 print("TIME IN load:         {:.2f}".format(time_load))
