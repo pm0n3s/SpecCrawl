@@ -5,11 +5,9 @@ import sys
 import time
 from dictionary import Dictionary
 
-LENGTH = 11
+LENGTH = 15
 
-WORDS = "C:\\Projects\\SpecCrawl\\keywords"
-
-dictionary = sys.argv[1] if len(sys.argv) == 3 else WORDS
+dictionary = "C:\\Projects\\SpecCrawl\\keywords"
 
 d = Dictionary()
 loaded = d.load(dictionary)
@@ -32,13 +30,13 @@ while True:
     c = fp.read(1)
     if not c:
         break
-    if re.match(r"[A-Za-z]", c) or (c == "-") or re.match(r"[0-9]", c):
+    if re.match(r'[\S]', c):
         word += c
         index += 1
         if index > LENGTH:
             while True:
                 c = fp.read(1)
-                if not c or not re.match(r"[A-Za-z]", c) or (c == "-") or re.match(r"[0-9]", c):
+                if not c or not re.match(r'[\S]', c):
                     break
             index, word = 0, ""
     elif index > 0:
