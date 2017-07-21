@@ -1,8 +1,32 @@
 #!/usr/bin/env python3
+#  -*- coding: utf-8 -*-
 
+import PyPDF2
+import os
 import re
 import sys
 from dictionary import Dictionary
+
+pdf = input('What is the pdf name?')
+
+directory = 'C:\\Projects\\SpecCrawl\\'
+if not os.path.exists(directory):
+    os.makedirs(directory)
+
+os.chdir('C:\\Users\\pbodin\\Downloads')    # work computer
+# os.chdir('C:\\Users\\Patrick\\Downloads')    # home computer
+
+pdfFile = open(pdf + ".pdf", 'rb')
+
+reader = PyPDF2.PdfFileReader(pdfFile)
+
+newTxt = open(directory + 'testtxt', 'w')
+
+for pageNum in range(reader.numPages):
+    txtWall = reader.getPage(pageNum).extractText().encode("utf-8")
+    newTxt.write(str(txtWall))
+ 
+newTxt.close()
 
 LENGTH = 15
 
